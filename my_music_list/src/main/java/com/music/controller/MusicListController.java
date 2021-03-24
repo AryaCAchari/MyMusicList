@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.music.model.MusicListBean;
+import com.music.model.MusicTypeBean;
 import com.music.service.MusicListService;
 import com.music.utils.CustomResponse;
 
@@ -20,6 +21,11 @@ public class MusicListController {
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public CustomResponse save(@RequestBody MusicListBean bean) {
 		return this.musicListService.save(bean);
+	}
+	
+	@RequestMapping(value = "save/type", method = RequestMethod.POST)
+	public CustomResponse saveType(@RequestBody MusicTypeBean bean) {
+		return this.musicListService.saveMusicType(bean);
 	}
 	
 	@RequestMapping(value = "get/all", method = RequestMethod.GET)

@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "music_list")
-public class MusicListBean {
+public class MusicListBean extends CustomMusicListBean{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +26,9 @@ public class MusicListBean {
 	
 	@Column(name = "singer")
 	private String singer;
+	
+	@Column(name = "music_type_id")
+	private Long musicTypeId;
 	
 	@Column(name = "active_indicator")
 	private Integer activeIndicator = 1;
@@ -71,6 +74,14 @@ public class MusicListBean {
 	public void setSinger(String singer) {
 		this.singer = singer;
 	}
+	
+	public Long getMusicTypeId() {
+		return musicTypeId;
+	}
+
+	public void setMusicTypeId(Long musicTypeId) {
+		this.musicTypeId = musicTypeId;
+	}
 
 	public Integer getActiveIndicator() {
 		return activeIndicator;
@@ -94,5 +105,5 @@ public class MusicListBean {
 
 	public void setUdpatedOn(Date udpatedOn) {
 		this.udpatedOn = udpatedOn;
-	}
+	}	
 }
