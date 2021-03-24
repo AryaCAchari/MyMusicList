@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="tool-bar-title-content">Music playlist</div>
+      </div>
+
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Songs</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let music of musicPlayList; let i = index;">
+              <td>{{music.bean.name}}</td>
+              <td>
+                <table>
+                  <tr>
+                    <td>{{music.name}}</td>
+                    <td>{{music.singer}}</td>
+                    <td><button>Remove</button></td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <button>Delete</button>
+                <button>Add</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
