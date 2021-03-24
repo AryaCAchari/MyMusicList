@@ -16,7 +16,7 @@ export class HttpClientService {
         private http: HttpClient,
         private router: Router) { }
 
-    postServi(url: string, params: object): Observable<any> {
+    postService(url: string, params: object): Observable<any> {
         let headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });

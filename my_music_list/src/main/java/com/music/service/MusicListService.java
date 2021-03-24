@@ -39,10 +39,8 @@ public class MusicListService {
 	
 	public CustomResponse saveMusicType(MusicTypeBean bean) {
 		try {
-			String message = null;
 			bean = this.typeRepository.save(bean);
-			message = bean.getId() == null ? "New music genre added to the playlist!" : "Updated the music genre";
-			return new CustomResponse(200, bean, message);
+			return new CustomResponse(200, bean, "Music gnre added");
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new CustomResponse(500, null, "Music genre can't added, please try again");
@@ -70,6 +68,25 @@ public class MusicListService {
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new CustomResponse(500, null, "Something went wrong");
+		}
+	}
+	
+	public CustomResponse deleteMusicGenreById(Long id) {
+		try {
+			this.typeRepository.deleteById(id);
+			return new CustomResponse(200, null, "Music genre removed from playlist");
+		}catch (Exception e) {
+			e.printStackTrace();
+			return new CustomResponse(500, null, "Something went wrong");
+		}
+	}
+	
+	public CustomResponse findAllGnre() {
+		try {
+			return new CustomResponse(200, this.typeRepository.findAll(), "Genre lsited!");
+		}catch (Exception e) {
+			e.printStackTrace();
+			return new CustomResponse(500, null, "Somehitg went wrong!");
 		}
 	}
 }

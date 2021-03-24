@@ -1,6 +1,7 @@
 package com.music.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,8 +34,18 @@ public class MusicListController {
 		return this.musicListService.findAll();
 	}
 	
-	@RequestMapping(value = "delete", method = RequestMethod.DELETE)
-	public CustomResponse delete(@RequestBody MusicListBean bean) {
-		return this.musicListService.deletebyId(bean.getId());
+	@RequestMapping(value = "get/all/genre", method = RequestMethod.GET)
+	public CustomResponse getAllGenre() {
+		return this.musicListService.findAllGnre();
+	}
+	
+	@RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+	public CustomResponse delete(@PathVariable Long id) {
+		return this.musicListService.deletebyId(id);
+	}
+	
+	@RequestMapping(value = "delete/genre/{id}", method = RequestMethod.DELETE)
+	public CustomResponse deleteGenre(@PathVariable Long id) {
+		return this.musicListService.deleteMusicGenreById(id);
 	}
 }
